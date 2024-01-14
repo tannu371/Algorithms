@@ -43,6 +43,8 @@ tree_node** create_node_list(int n) {
     return node_list;
 }
 
+// David Huffman
+
 tree_node* Tree(int n) {
     tree_node** node_list = NULL; 
     node_list = create_node_list(n);
@@ -72,3 +74,6 @@ int main() {
 
 // n = 5
 // 20 30 10 5 30
+
+// n=10
+// 2 13 15 22 25 30 35 55 84 97

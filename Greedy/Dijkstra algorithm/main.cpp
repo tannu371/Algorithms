@@ -4,6 +4,7 @@
 
 using namespace std;
 
+// Edsger W. Dijkstra
 void Dijkstra() {
 
 }

@@ -4,8 +4,9 @@
 
 using namespace std;
 
+// Joseph Kruskal 
 void Kruskal() {
-    
+
 }
 
 int main() {

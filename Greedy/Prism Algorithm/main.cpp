@@ -4,8 +4,9 @@
 
 using namespace std;
 
+// Vojtěch Jarník
 void Prism() {
-    
+
 }
 
 int main() {

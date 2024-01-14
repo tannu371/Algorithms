@@ -2,6 +2,7 @@
 triple:          'arm64-apple-darwin'
 binary-path:     '/Users/tannu/Repository/Algorithms/Greedy/Prism Algorithm/main'
 relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003FA0, symSize: 0x8 }
-  - { offsetInCU: 0x2CE1, offset: 0x2CE1, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003FA0, symSize: 0x8 }
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: __Z5Prismv, symObjAddr: 0x0, symBinAddr: 0x100003F9C, symSize: 0x4 }
+  - { offsetInCU: 0x2CE1, offset: 0x2CE1, size: 0x8, addend: 0x0, symName: __Z5Prismv, symObjAddr: 0x0, symBinAddr: 0x100003F9C, symSize: 0x4 }
+  - { offsetInCU: 0x2CFA, offset: 0x2CFA, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x4, symBinAddr: 0x100003FA0, symSize: 0x8 }
 ...
