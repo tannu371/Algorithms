@@ -4,11 +4,11 @@ using namespace std;
 
 // select if 
 
+// Time complexity: O(nlog₂n)
 void Job_scheduling() {
-    
+
 }
 
-// Time complexity: O(n²)
 
 int main() {
 

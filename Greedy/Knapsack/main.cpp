@@ -39,6 +39,7 @@ void Quick_Sort(int p[], int w[], int low, int high) {
 
 // Maximize profit 
 // select in decreasing order of p/w
+// Time complexity: O(nlog₂n)
 
 void Knapsack() {
     int n;
@@ -96,8 +97,6 @@ int main() {
 }
 
 // n=7
-// w = {2, 3, 5, 7, 1, 4, 1}
 // 2 3 5 7 1 4 1
-// p = {10, 5, 15, 7, 6, 18, 3}
 // 10 5 15 7 6 18 3
 // m=15

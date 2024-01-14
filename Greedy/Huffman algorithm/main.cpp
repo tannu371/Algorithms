@@ -4,7 +4,8 @@
 using namespace std;
 
 // Two way merge tree
-// Time complexity: O(n+m)
+// Time Complexity: O(nlog₂n)
+// Space Complexity: O(n)
 
 struct tree_node {
     tree_node* lchild = NULL;
