@@ -1,0 +1,8 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/tannu/Repository/Algorithms/insertion_sort/main'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: __Z14insertion_sortPii, symObjAddr: 0x0, symBinAddr: 0x100003EAC, symSize: 0xEC }
+  - { offsetInCU: 0x2CE1, offset: 0x2CE1, size: 0x8, addend: 0x0, symName: __Z14insertion_sortPii, symObjAddr: 0x0, symBinAddr: 0x100003EAC, symSize: 0xEC }
+  - { offsetInCU: 0x2D5D, offset: 0x2D5D, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0xEC, symBinAddr: 0x100003F98, symSize: 0x8 }
+...
