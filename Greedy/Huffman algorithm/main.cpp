@@ -35,11 +35,17 @@ tree_node** create_node_list(int n) {
     tree_node** node_list;
     node_list = new tree_node*[n];
     cout << "Enter weights: ";
-    for(int i=0; i<n; i++) cin >> node_list[i]->weight;
+    for(int i=0; i<n; i++) {
+        tree_node* newNode = new tree_node;
+        cin >> newNode->weight;
+        node_list[i] = newNode;
+    } 
     return node_list;
 }
 
-tree_node* Tree(tree_node* node_list[], int n) {
+tree_node* Tree(int n) {
+    tree_node** node_list = NULL; 
+    node_list = create_node_list(n);
     int m =n;
     int Total_moves = 0;
     for(int i=0; i<n-1; i++) {
@@ -60,7 +66,9 @@ int main() {
     int n; 
     cout << "Enter number of files: ";
     cin >> n;
-
-    tree_node** node_list = create_node_list(n);
-    Tree(node_list, n);
+ 
+    Tree(n);
 }
+
+// n = 5
+// 20 30 10 5 30
