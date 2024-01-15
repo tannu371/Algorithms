@@ -4,8 +4,6 @@
 using namespace std;
 
 // Two way merge tree
-// Time Complexity: O(nlog₂n)
-// Space Complexity: O(n)
 
 struct tree_node {
     tree_node* lchild = NULL;
@@ -45,8 +43,10 @@ tree_node** create_node_list(int n) {
 }
 
 // David Huffman
+// Time Complexity: O(nlog₂n)
+// Space Complexity: O(n)
 
-tree_node* Tree(int n) {
+tree_node* Huffman(int n) {
     tree_node** node_list = NULL; 
     node_list = create_node_list(n);
     int m =n;
@@ -70,7 +70,7 @@ int main() {
     cout << "Enter number of files: ";
     cin >> n;
  
-    Tree(n);
+    Huffman(n);
 }
 
 // n = 5

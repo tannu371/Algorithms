@@ -3,7 +3,7 @@
 
 using namespace std;
 
-// decreasing order
+// increasing order
 
 template<typename T>
 int partition(T c[], int low, int high) {
