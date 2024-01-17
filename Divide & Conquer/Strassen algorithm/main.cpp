@@ -3,7 +3,7 @@
 // Normally 8x and 4+ in (n/2 x n/2) matrix multiplication -> Time Complexity: O(n³)
 
 // Volker Strassen
-// 7x and 8+ -> Time Complexity: O(n³)
+// 7x and 8+ -> Time Complexity: O(n^2.81)
 // recursive method
 void Strassen_multiplication() {
 

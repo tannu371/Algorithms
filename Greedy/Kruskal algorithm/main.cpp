@@ -5,6 +5,7 @@
 using namespace std;
 
 // Joseph Kruskal 
+// Sorting of weighted edges
 // Time Complexity: O(Elog₂E)
 void Kruskal() {
 

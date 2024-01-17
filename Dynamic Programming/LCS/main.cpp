@@ -1,3 +1,5 @@
+// Dynamic programming - principle of optimality
+
 // LCS - Longest common subsequence
 // LCS of 2 sequence is not unique
 
