@@ -5,23 +5,25 @@
 
 using namespace std;
 
+#define INF 999999
+
 // Time Complexity O(n²)
 
 // directed graph
-int** create_matrix_graph(int v) {
+int** create_cost_matrix(int n) {
 
-    int e;
+    int m;
     cout << "Enter number of edges: ";
-    cin >> e;
+    cin >> m;
 
     int** cost_matrix;
-    cost_matrix = new int*[v];
-    for(int i=0; i<v; i++) cost_matrix[i] = new int[v];
+    cost_matrix = new int*[n];
+    for(int i=0; i<n; i++) cost_matrix[i] = new int[n];
 
-    for(int i=0; i<v; i++) {
-        for(int j=0; j<v; j++) {
+    for(int i=0; i<n; i++) {
+        for(int j=0; j<n; j++) {
             if(i==j) cost_matrix[i][j] = 0;
-            else cost_matrix[i][j] = -1;               
+            else cost_matrix[i][j] = INF;               
         }
     }
            
@@ -30,7 +32,7 @@ int** create_matrix_graph(int v) {
     int cost;
     cout << "Enter the pair of vertices representing the edges and weight: " << endl;
 
-    for(int i=0; i<e; i++) {
+    for(int i=0; i<m; i++) {
         cin >> v1 >> v2 >> cost;
         // cost_matrix[v1-1][v2-1] =  cost;
         // cost_matrix[v1-65][v2-65] = cost;
@@ -43,24 +45,20 @@ int** create_matrix_graph(int v) {
 int find_min(int array[], int v) {
     int minIndex = 0;
     for(int i=1; i<v; i++) {
-        if(array[i] != -1) {
-            if(array[minIndex] == -1 ) minIndex = i;
-            if(array[i] <= array[minIndex]) minIndex = i; 
-        }
+        if(array[i] <= array[minIndex]) minIndex = i; 
     }
     return minIndex;
 }
 
-// cost[i][j] = -1 -> not reachable
-// s[i] = 0 -> not visited
-// s[i] = 1 -> visited
+// visited[i] = 0 -> not visited
+// visited[i] = 1 -> visited
 
 // Edsger W. Dijkstra
 
-void Dijkstra(int v0, int** cost, int v) {
-    int visited[v];
-    int distance[v];
-    for(int i=0; i<v; i++) {
+void Dijkstra(int v0, int** cost, int n) {
+    int visited[n];
+    int distance[n];
+    for(int i=0; i<n; i++) {
         visited[i]=0;
         // distance[i]=cost[v0-1][i];
         // distance[i]=cost[v0-65][i];
@@ -72,27 +70,27 @@ void Dijkstra(int v0, int** cost, int v) {
     visited[v0-97] = 1;
     // cout << v0 << " ";
     cout << char(v0) << " ";
-    for (int k=2; k<v; k++) {
-        int arr[v];
-        for(int i=0; i<v; i++) {
+    for (int k=2; k<n; k++) {
+        int arr[n];
+        for(int i=0; i<n; i++) {
             if (visited[i] == 0) arr[i] = distance[i];
-            else arr[i] = -1;
+            else arr[i] = INF;
         }
-        int minIndex= find_min(arr, v);
+        int minIndex= find_min(arr, n);
         visited[minIndex] = 1;
         // cout << minIndex+1 << " ";
         // cout << char(minIndex+65) << " ";
         cout << char(minIndex+97) << " ";
 
         int chosen_v = minIndex;
-        for(int i=0; i<v; i++) {
-            if(visited[i]==0 && cost[chosen_v][i] != -1) {
-                if(distance[i] == -1 || distance[i] > distance[chosen_v] + cost[chosen_v][i]) distance[i] = distance[chosen_v] + cost[chosen_v][i];
+        for(int i=0; i<n; i++) {
+            if(visited[i]==0 && cost[chosen_v][i] != INF) {
+                if(distance[i] > distance[chosen_v] + cost[chosen_v][i]) distance[i] = distance[chosen_v] + cost[chosen_v][i];
             }
         }
     }
 
-    for(int i=0; i<v; i++) {
+    for(int i=0; i<n; i++) {
         if(!visited[i]) {
             // cout << i+1 << endl;
             // cout << char(i+65) << endl;
@@ -104,14 +102,13 @@ void Dijkstra(int v0, int** cost, int v) {
 
 
 int main() {
-    int v;
+    int n;
     cout << "Enter number of vertix: ";
-    cin >> v;
+    cin >> n;
 
     int** cost_matrix;
-    cost_matrix = create_matrix_graph(v);
-    Dijkstra('b', cost_matrix, v);
-
+    cost_matrix = create_cost_matrix(n);
+    Dijkstra('b', cost_matrix, n);
 }
 
 /* 
