@@ -1,4 +1,4 @@
-Time complexity
+/* Time complexity
 
 T(n) = aT(n/2) + 1 for n>1 and T(n) = T(1) for n=1
 T(n) = O(n)
@@ -13,3 +13,5 @@ T(n) = O(log₂n)
 T(n) = aT(√n) + log₂n for n>1 and T(n) = T(1) for n=1
 n = 2ᵐ
 T(n) = O(log₂n log₂log₂n)
+
+*/
