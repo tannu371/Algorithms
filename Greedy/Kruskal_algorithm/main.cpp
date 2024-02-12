@@ -103,9 +103,7 @@ int main() {
     cout << "Enter number of edges: ";
     cin >> m;
 
-    Graph(m){this->m = m} {
-        
-    };
+    
     
     graph_edge* edges;
     edges = new graph_edge[m];
