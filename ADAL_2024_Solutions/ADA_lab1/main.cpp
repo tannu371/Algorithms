@@ -1,7 +1,10 @@
-// int magic_const = n*(n*n+1)/2;
-// matrix of 1 to n²
-// next position at (i-1, j+1)
-// if it already contains number i+2
+// !! Still need to work on it.
+/* 
+! magic constant = n(n²+1)/2;
+! matrix of 1 to n²
+? next position : (i-1, j+1)
+? if it already contains number : (i+2, j-1)
+*/
 #include<iostream>
 
 using namespace std;
@@ -52,13 +55,13 @@ int calculate_cost(int** arbi, int** magic, int n) {
 }
 
 void print_magic_square(int** magic, int n) {
+    cout << endl;
     for(int i=0; i<n; i++) {
         for(int j=0; j<n; j++) {
             cout << magic[i][j] << "\t";
         }
         cout << endl;
     }
-    cout << endl;
 }
 
 void min_cost_magic_square(int** arbi, int n) {
@@ -67,8 +70,9 @@ void min_cost_magic_square(int** arbi, int n) {
 	for(int i=0; i<n*n; i++) {
 		magic = magic_square(i, n);
         cost[i] = calculate_cost(arbi, magic, n);
-        cout << cost[i] << endl;
         print_magic_square(magic, n);
+        cout  << "cost: " << cost[i] << endl;
+       
 	}
 	
 	int min = 0;

@@ -1,0 +1,39 @@
+Big Oh - asymptotic upper bound  
+f(n) = O(g(n)) implies 0 <= f(n) <= cg(n) for n>=n₀
+
+Omega - asymptotic lower bound  
+f(n) = Ω(g(n)) implies 0 <= cg(n) <= f(n)  for n>=n₀
+
+Theta - asymptotic "tight" or "exact" bound (both lower and upper).  
+f(n) = θ(g(n)) implies 0 <= c₁g(n) <= f(n) <= c₂g(n) for n>=n₀
+It is a combination of Big O and Big Omega.
+Theta notation is more precise than the Big-Oh and Big-Omega notation.
+
+Little Oh : f(n) = o(g(n)) implies 0 <= f(n) < cg(n) for n>=n₀
+Little Omega : f(n) = ω(g(n)) implies 0 <= cg(n) < f(n)  for n>=n₀
+
+
+
+The 5 Properties of Algorithms
+1. Input specified.
+2. Output specified.
+3. Definiteness.
+4. Effectiveness.
+5. Finiteness.
+
+Qualities of a Good Algorithm
+1. Efficiency: A good algorithm should perform its task quickly and use minimal resources.
+2. Correctness: It must produce the correct and accurate output for all valid inputs.
+3. Clarity: The algorithm should be easy to understand and comprehend, making it maintainable and modifiable.
+4. Scalability: It should handle larger data sets and problem sizes without a significant decrease in performance.
+5. Reliability: The algorithm should consistently deliver correct results under different conditions and environments.
+6. Optimality: Striving for the most efficient solution within the given problem constraints.
+7. Robustness: Capable of handling unexpected inputs or errors gracefully without crashing.
+8. Adaptability: Ideally, it can be applied to a range of related problems with minimal adjustments.
+9. Simplicity: Keeping the algorithm as simple as possible while meeting its requirements, avoiding unnecessary complexity.
+
+
+
+
+
+

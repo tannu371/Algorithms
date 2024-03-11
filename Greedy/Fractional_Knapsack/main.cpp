@@ -41,22 +41,7 @@ void Quick_Sort(int p[], int w[], int low, int high) {
 // select in decreasing order of p/w
 // Time complexity: O(nlog₂n)
 
-void Knapsack() {
-    int n;
-    cout << "Enter number of objects: ";
-    cin >> n;
-
-    int w[n];
-    cout << "Enter weight of objects: ";
-    for(int i=0; i<n; i++) cin >> w[i];
-
-    int p[n];
-    cout << "Enter profit of objects: ";
-    for(int i=0; i<n; i++) cin >> p[i];
-    
-    int m;
-    cout << "Enter capacity of Knapsack: ";
-    cin >> m;
+void fractionalKnapsack(int n, int*p, int*w, int m) {
 
     // decreasing order of profit/weight
     Quick_Sort(p, w, 0, n-1);       
@@ -74,23 +59,39 @@ void Knapsack() {
     if(i<=n) x[i] = U/w[i];
 
     float max_profit = 0;
-    for(int i=0; i<n; i++) max_profit += p[i]*x[i];
+    cout << "Weight\t" << "Fraction\t" << "Profit" << endl;
+    for(int j=0; j<i+1; j++) {
+        cout << w[j] << x[j] << p[j]*x[j] << endl;
+        max_profit += p[j] * x[j];
+    } 
 
     cout << "Maximum Profit: "<< max_profit;
 }
 
-void display_array(int arr[], int size) {
-    for(int i=0; i<size; i++) {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
-}
-
-
-
 int main() {
+    int n;
+    cout << "Enter number of objects: ";
+    cin >> n;
+
+    int p[n];
+    cout << "Enter profit of objects: ";
+    for (int i = 0; i < n; i++) cin >> p[i];
+
+    int w[n];
+    cout << "Enter weight of objects: ";
+    for (int i = 0; i < n; i++) {
+        cin >> w[i];
+        if (w[i] < 0) {
+            cerr << "Weight of object can't be negative" << endl;
+            return;
+        }
+    }
+
+    int m;
+    cout << "Enter capacity of Knapsack: ";
+    cin >> m;
     
-    Knapsack();
+    fractionalKnapsack(n, p, w, m);
 
     return 0;
 

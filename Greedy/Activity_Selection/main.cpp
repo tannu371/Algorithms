@@ -44,12 +44,16 @@ void Activity_selection() {
     cin >> n;
 
     int s[n];
-    cout << "Enter start time of each activity: ";
-    for(int i=0; i<n; i++) cin >> s[i];
-
     int f[n];
-    cout << "Enter finish time of each activity: ";
-    for(int i=0; i<n; i++) cin >> f[i];
+    for(int i=0; i<n; i++) {
+        cout << "Enter start time and finish time of " << "activity" << (i+1) << " ";
+        cin >> s[i];
+        cin >> f[i];
+        if(f[i] < s[i]) {
+    		cerr << f[i] << " finish time is not possible for start time " << s[i] << endl;
+            return;
+		}
+    }
 
     // increasing order of finishing time
     Quick_Sort(s, f, 0, n-1);
@@ -100,12 +104,15 @@ int main() {
     cin >> n;
 
     int s[n];
-    cout << "Enter start time of each activity: ";
-    for(int i=0; i<n; i++) cin >> s[i];
-
     int f[n];
-    cout << "Enter finish time of each activity: ";
-    for(int i=0; i<n; i++) cin >> f[i];
+    for(int i=0; i<n; i++) {
+        cout << "Enter start time and finish time of " << "activity" << (i+1) << " ";
+        cin >> s[i];
+        cin >> f[i];
+        if(f[i] < s[i]) {
+    		cerr << f[i] << " finish time is not possible for start time " << s[i] << endl;
+		} 
+    }
 
     Quick_Sort(s, f, 0, n-1);
     cout << "\n\tstart time\t" << "finish time\t" << endl;
