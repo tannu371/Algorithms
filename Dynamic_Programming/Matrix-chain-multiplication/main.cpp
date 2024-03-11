@@ -5,12 +5,11 @@ using namespace std;
 
 void matrix_chain_order (int* p, int i, int j, int** m, int** s) {
     if(i==j) {
-        m[i][j] = 0;
         return;
     }
     m[i][j] = INF;
     int min;
-    for(int k = i; i<j; i++) {
+    for(int k = i; k<j; k++) {
         matrix_chain_order(p, i, k, m, s);
         matrix_chain_order(p, k+1, j, m, s);
         min = m[i][k] + m[k+1][j] + p[i - 1] * p[k] * p[j];
@@ -24,7 +23,10 @@ void matrix_chain_order (int* p, int i, int j, int** m, int** s) {
 }
 
 void print_order(int** s, int i, int j) {
-    if(i>=j) return;
+    if(i>=j) {
+        
+        return;
+    } 
     if(j-i == 1) {
         cout << "( A" << i << "  A" << j << " )";
     }
@@ -54,10 +56,13 @@ int main () {
     p[0] = A[1].first;
 
     int* m[n+1];
-    for(int i=1; i<n+1; i++) m[i] = new int[n+1];
+    for(int i=1; i<n+1; i++) {
+        m[i] = new int[n + 1];
+        m[i][i] = 0;
+    } 
     int* s[n+1];
     for (int i = 1; i < n + 1; i++) s[i] = new int[n + 1];
     matrix_chain_order(p, 1, n, m, s);
-    cout << "maximum cost: " << m[1][n] << endl;
-    print_order(s, 1, n);
+    cout << "Minimum cost: " << m[1][n] << endl;
+    // print_order(s, 1, n);
 }
