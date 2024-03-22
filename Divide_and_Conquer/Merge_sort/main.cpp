@@ -2,7 +2,6 @@
 
 using namespace std;
 
-template<typename T>
 void Merge(T init_list[], int lb, int mid, int ub) {
     T merged_list[ub+1];
     int i=lb, j = mid+1, k=lb;

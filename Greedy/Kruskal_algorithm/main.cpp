@@ -1,99 +1,70 @@
 // Minimum Spanning Tree
-
 #include<iostream>
 
 using namespace std;
 
-// increasing order
-template<typename T>
-int partition(T c[], int low, int high) {
-    int pIndex = low;
-    int i=low, j=high;
-    while(i<j) {
-        while(c[i] <= c[pIndex] && i<high) i++;
-        while(c[j] > c[pIndex]) j--;
-        if(i<j) {
-            T temp = c[i];
-            c[i] = c[j];
-            c[j] = temp;
-            j--;
-        }
-    }
-    T temp = c[pIndex];
-    c[pIndex] = c[j];
-    c[j] = temp;
-    pIndex = j;
-    return pIndex;
-}
+/* 
+    * Joseph Kruskal 
+    & Sorting of weighted edges.
+    & Make sure added wedge in MST do not for cycle.
+    ! Time Complexity : O(m + n log n)
+*/
 
-template<typename T>
-void Quick_Sort(T c[], int low, int high) {
-    if(low>=high) return;
-    int pIndex = partition(c, low, high);
-    Quick_Sort(c, low, pIndex-1);
-    Quick_Sort(c, pIndex+1, high);
-}
-
-struct graph_edge{
-    char u;
-    char v;
+struct edge {
+    int u;
+    int v;
     int weight;
-    bool operator<= (const graph_edge &rhs) const {
-        return this->weight <= rhs.weight;
-    }
-
-    bool operator> (const graph_edge &rhs) const {
-        return this->weight > rhs.weight;
-    }
 };
 
+bool compare(edge e1, edge e2) {
+    return e1.weight < e2.weight;
+}
 
-class Graph {
-    graph_edge** edges;
-    
-    Graph(int m) {
+int findParent(int v, int* parent) {
+    if (parent[v] == v) return v;
+    return findParent(parent[v], parent);
+}
 
+void Kruskal(edge* edges, int n, int m) {
+    sort(edges, edges + m, compare);
+    edge* MST = new edge[n - 1];
+
+    int* parent = new int[n];
+    for (int i = 0; i < n; i++) {
+        parent[i] = i;
     }
 
-    void addEdges() {
+    int i = 0;
+    int j = 0;
+    int cost = 0;
+    while (i < n - 1 && j < m) {
+        edge current_edge = edges[j];
 
-    }
-};
+        // & Check if we can add the current edge in MST or not.
+        int sourceParent = findParent(current_edge.u, parent);
+        int destParent = findParent(current_edge.v, parent);
 
-
-
-// Joseph Kruskal 
-// Sorting of weighted edges
-// Time Complexity: O(Elog₂E)
-
-graph_edge* Kruskal(graph_edge edges[],  int n, int m) {
-    Quick_Sort(edges, 0, m);
-    graph_edge* T;
-    T = new graph_edge[n-1];
-
-    int i=0;
-    int j=0;
-    while(i<n-1 && j<m) {
-        graph_edge e = edges[j];
-        bool flag1 = false;
-        for(int j=0; j<i; j++) {
-            if(T[j].u == e.u || T[j].v == e.u) flag1 = true;
+        if (sourceParent != destParent) {
+            MST[i] = current_edge;
+            i++;
+            parent[sourceParent] = destParent;
+            cost += current_edge.weight;
         }
-        bool flag2 = false;
-        if(flag1) {
-            for(int j=0; j<i; j++) {
-                if(T[j].u == e.v || T[j].v == e.v) flag2 = true;
-            }
-        }
-        if(!flag2) {
-            T[i++] = e;
-        }
+
         j++;
     }
-    if(i<n-1) {
-        cout << "No Spanning Tree exist." << endl;
+
+    cout << "Edge\tWeight" << endl;
+    for (int i = 0; i < n - 1; i++) {
+        if (MST[i].u < MST[i].v) {
+            cout << i + 1 << ") " << MST[i].u << " " << MST[i].v << "\t" << MST[i].weight << endl;
+        }
+        else {
+            cout << i + 1 << ") " << MST[i].v << " " << MST[i].u << "\t" << MST[i].weight << endl;
+        }
     }
-    return T;
+
+    cout << "Total cost of MST: " << cost << endl;
 }
 
 int main() {
@@ -103,35 +74,32 @@ int main() {
     cout << "Enter number of edges: ";
     cin >> m;
 
-    
-    
-    graph_edge* edges;
-    edges = new graph_edge[m];
 
-    cout << "Enter the edges and weights: ";
-    for(int i=0; i<m; i++) {
-        cin >> edges[i].u >> edges[i].v;
-        cin >> edges[i].weight;
+
+    edge* edges;
+    edges = new edge[m];
+
+    int s, d, w;
+    cout << "Enter the edges and weights: " << endl;
+    for (int i = 0; i < m; i++) {
+        cin >> s >> d >> w;
+        edges[i].u = s;
+        edges[i].v = d;
+        edges[i].weight = w;
     }
 
-    graph_edge* T;
-    T = Kruskal(edges, n, m);
-
-    cout << "Edege\tWeight" << endl;
-    for(int i=0; i<n-1; i++) {
-        cout  << T[i].u << T[i].v << "\t" << T[i].weight << endl;
-    }
+    Kruskal(edges, n, m);
 }
 
 /*
 n=7 m=9
-12 28
-23 16
-34 12
-45 22
-56 25
-61 10
-27 14
-75 24
-74 18
-*/ 
+0 1 28
+1 2 16
+2 3 12
+3 4 22
+4 5 25
+5 0 10
+1 6 14
+6 4 24
+6 3 18
+*/

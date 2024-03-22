@@ -1,100 +1,79 @@
 #include<iostream>
+#include<algorithm>
 
 using namespace std;
-
-void interchange(int a[], int i, int j) {
-    int temp = a[i];
-    a[i] = a[j];
-    a[j] = temp;
-}
-
-int partition(int p[], int w[], int low, int high) {
-    int pIndex = low;
-    float pivot = float(p[pIndex])/w[pIndex];
-    int i=low, j=high;
-    while(i<j) {
-        while(float(p[i])/w[i] >= pivot && i<high) i++;
-        while(float(p[j])/w[j] < pivot) j--;
-        if(i<j) {
-            interchange(p, i, j);
-            interchange(w, i, j);
-
-            j--;
-        }
-    }
-    interchange(p, pIndex, j);
-    interchange(w, pIndex, j);
-
-    pIndex = j;
-
-    return pIndex;
-}
-
-void Quick_Sort(int p[], int w[], int low, int high) {
-    if(low>=high) return;
-    int pIndex = partition(p, w, low, high);
-    Quick_Sort(p, w, low, pIndex-1);
-    Quick_Sort(p, w, pIndex+1, high);
-}
 
 // Maximize profit 
 // select in decreasing order of p/w
 // Time complexity: O(nlog₂n)
 
-void fractionalKnapsack(int n, int*p, int*w, int m) {
+struct Object{
+    int id;
+    float weight;
+    float profit;
+};
 
-    // decreasing order of profit/weight
-    Quick_Sort(p, w, 0, n-1);       
+bool compare(Object &o1, Object &o2) {
+    return (o1.profit/o1.weight > o2.profit/o2.weight);
+}
+
+void fractionalKnapsack() {
+
+    int n;
+    do {
+        cout << "Enter number of objects: ";
+        cin >> n;
+    } while(n<=0);
+    
+
+    Object* objs = new Object[n];
+    float w, p;
+    for(int i=0; i<n; i++) {
+        cout << "Enter weight and profit of object "<< i+1 << " : ";
+        cin >> w >> p;
+            
+        while (w <= 0) {
+            cout << "Weight of object cannot be negative or zero." << endl;
+            cout << "Re-enter weight and profit of object " << i+1  << " : ";
+            cin >> w >> p;
+        } 
+
+        objs[i].id = i+1;
+        objs[i].weight = w;
+        objs[i].profit = p;
+    }
+
+    sort(objs, objs+n, compare); 
+
+    float m;
+    cout << "Enter capacity of Knapsack: ";
+    cin >> m;
 
     float x[n];
     for(int i=0; i<n; i++) x[i]=0;
     float U = m;
     int i=0;
-    while(i<n) {
-        if(w[i] > U) break;
+    while (i<n && objs[i].weight < U) {
         x[i] = 1;
-        U -= w[i];
+        U -= objs[i].weight;
         i++;
     }
-    if(i<=n) x[i] = U/w[i];
+    if(i<n) x[i] = U/objs[i].weight;
 
     float max_profit = 0;
-    cout << "Weight\t" << "Fraction\t" << "Profit" << endl;
-    for(int j=0; j<i+1; j++) {
-        cout << w[j] << x[j] << p[j]*x[j] << endl;
-        max_profit += p[j] * x[j];
+    cout << "\nId\tWeight\tProfit\tp/w\tFraction taken" << endl;
+    for(int j=0; j<=i; j++) {
+        w = objs[j].weight;
+        p = objs[j].profit;
+        cout << objs[j].id << "\t" << w << "\t" << p << '\t' << p/w << '\t' << x[j] << endl;
+        max_profit += objs[j].profit * x[j];
     } 
 
-    cout << "Maximum Profit: "<< max_profit;
+    cout << "\nMaximum Profit: "<< max_profit;
 }
 
 int main() {
-    int n;
-    cout << "Enter number of objects: ";
-    cin >> n;
-
-    int p[n];
-    cout << "Enter profit of objects: ";
-    for (int i = 0; i < n; i++) cin >> p[i];
-
-    int w[n];
-    cout << "Enter weight of objects: ";
-    for (int i = 0; i < n; i++) {
-        cin >> w[i];
-        if (w[i] < 0) {
-            cerr << "Weight of object can't be negative" << endl;
-            return;
-        }
-    }
-
-    int m;
-    cout << "Enter capacity of Knapsack: ";
-    cin >> m;
-    
-    fractionalKnapsack(n, p, w, m);
-
-    return 0;
-
+    fractionalKnapsack();
 }
 
 // n=7

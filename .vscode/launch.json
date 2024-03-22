@@ -14,8 +14,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/tannu/Repository/Algorithms/Dynamic_Programming/Matrix-chain-multiplication",
-      "program": "/Users/tannu/Repository/Algorithms/Dynamic_Programming/Matrix-chain-multiplication/build/Debug/outDebug"
+      "cwd": "/Users/tannu/Repository/Algorithms/Shortest_Path/Dijkstra_bruteforce",
+      "program": "/Users/tannu/Repository/Algorithms/Shortest_Path/Dijkstra_bruteforce/build/Debug/outDebug"
     }
   ]
 }
