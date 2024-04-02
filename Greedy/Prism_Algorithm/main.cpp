@@ -6,9 +6,9 @@
 
 using namespace std;
 
-// developed by Vojtěch Jarník in 1930
-// republished by Robert C. Prim in 1957
-// 
+//& developed by Vojtěch Jarník in 1930
+//& republished by Robert C. Prim in 1957
+
 void Prims(vector<pair<int, int>> *adj_list, int n, int source) {
     bool *visited = new bool[n];
     for(int i=0; i<n; i++) {

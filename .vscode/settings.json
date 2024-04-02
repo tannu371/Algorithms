@@ -61,7 +61,8 @@
     "iostream": "cpp",
     "queue": "cpp",
     "new": "cpp",
-    "vector": "cpp"
+    "vector": "cpp",
+    "cstddef": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }
