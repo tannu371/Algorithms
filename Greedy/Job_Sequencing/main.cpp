@@ -11,12 +11,13 @@ struct Job {
     int profit;
 };
 
+// * decreasing order
 bool compare(Job& j1, Job& j2) {
     if (j1.deadline == j2.deadline) return j1.profit > j2.profit;
     return j1.deadline > j2.deadline;
 }
 
-void Job_scheduling() {
+void Job_sequencing() {
     int n;
     do {
         cout << "Enter the number of jobs (n) : ";
@@ -84,6 +85,6 @@ void Job_scheduling() {
 
 
 int main() {
-    Job_scheduling();
+    Job_sequencing();
 }
 

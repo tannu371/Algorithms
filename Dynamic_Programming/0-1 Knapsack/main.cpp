@@ -8,7 +8,7 @@ struct Object {
 };
 
 bool Knapsack0_1(int n, Object* objs, int W, int** mat) {
-    
+   return false; 
 }
 
 int main() {
