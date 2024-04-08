@@ -60,6 +60,9 @@ int main() {
     	cin >> m;
     	n = m;
 	}
+	if(n<=0) {
+		cout << "Solution does not exist" << endl;
+	}
     cout << "Row numbers for each columns: " << endl;
     NQueens(n);
     cout << "\nPossible number of solutions: " << solutions << endl;
