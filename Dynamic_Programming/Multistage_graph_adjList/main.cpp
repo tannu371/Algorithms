@@ -14,9 +14,11 @@ using namespace std;
 ! Time Complexity : ϴ(|V| + |E|)    (graph is represented as adjacency list)
 */
 
-void BMultistageGraph(vector<pair<int, float>>* G, int k, int V, int* c, int i = 0, int* bcost = NULL) {
+float totalCost;
+
+void BMultistageGraph(vector<pair<int, float>>* G, int k, int V, int* c, int i = 0, float* bcost = NULL) {
     if (bcost == NULL) {
-        bcost = new int[V];
+        bcost = new float[V];
         for (int i = 0; i < V; i++) bcost[i] = INT_MAX;
         bcost[V-1] = 0.0;
     }
@@ -28,21 +30,22 @@ void BMultistageGraph(vector<pair<int, float>>* G, int k, int V, int* c, int i =
             c[i] = val.first;
         }
     }
+    totalCost = bcost[0];
 }
 
 int main() {
     int V;
-    cout << "Enter number of vertices: ";
+    cout << "Enter number of vertices(V): ";
     cin >> V;
     vector<pair<int, float>> graph[V];
     int E;
-    cout << "Enter number of edges: ";
+    cout << "Enter number of edges(E): ";
     cin >> E;
     int k;
-    cout << "Enter number of stages: ";
+    cout << "Enter number of stages(k): ";
     cin >> k;
     int s;
-    cout << "Enter source vertex: ";
+    cout << "Enter source vertex(s): ";
     cin >> s;
     cout << "Enter edges: " << endl;
     int u, v;
@@ -59,6 +62,7 @@ int main() {
     
     cout << "Minimum cost path from source to sink: ";
     int i = 0;
+    
     while (i != V - 1){
         if (s > 1) cout << char(i + s) << " ";
         else cout << i + s << " ";
@@ -67,6 +71,7 @@ int main() {
     if (s > 1) cout << char(i + s) << " ";
     else cout << i + s << " ";
     cout << endl;
+	cout << "Total Cost: " << totalCost << endl;
 }
 
 /*
