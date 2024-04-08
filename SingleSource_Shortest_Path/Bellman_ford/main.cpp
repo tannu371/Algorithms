@@ -1,16 +1,17 @@
 /*
-& Single source shortest path - starting node to all other node in the graph.
+& Uses dynammic programming 
+* Single source shortest path - finds shortest path from source node to all other node in the graph.
 * Much more worst time complexity than dijkastra algorithm
 ! Time complexity of Bellman-ford : O(EV)
+& In case of complete graph Time complexity : O(V³)
 ! Time complexity of Dijkastra : O((E+V)logV) when using a binary heap priority queue.
 * Dijkastra fails when graph has negative edge weights.
 * Bellman-ford detect negative cycles and determine where they occur.
-* Application of Bellman-ford: In finanace, when performing an arbitrage between two or more markets.
-^ Negative cycles: -ve self loops & cycle of loop whose net gain < 0.
-^  All reachable by negative cycle have best cost of -ve infinity.
+& Application of Bellman-ford: In finanace, when performing an arbitrage between two or more markets.
+^ Negative cycles: -ve self loops & cycle of loop whose net weight < 0.
+^ All reachable by negative cycle have best cost of -ve infinity.
+& Works with directed graph and with only those undirected graph which do not have negative weights. If undirected graph has a negative weight then it act as negative cycle (-ve self loop).
 */
-
-// & Directed weighted graph
 
 #include<iostream>
 #include<string>
@@ -82,7 +83,7 @@ Graph::Graph() {
 
 int* Bellman_ford(Graph G, Node* S) {
     int* D = new int[G.V];
-    for(int i=0; i<G.V; i++) {
+    for (int i = 0; i < G.V; i++) {
         D[i] = INT_MAX;
     }
     D[S->id] = 0;
@@ -90,7 +91,7 @@ int* Bellman_ford(Graph G, Node* S) {
     for (int i = 0; i < G.V - 1; i++) {
         for (auto edge : G.edges) {
             // * Relax edges : update D with shorter path
-            if(D[edge.start->id] == INT_MAX) continue;
+            if (D[edge.start->id] == INT_MAX) continue;
             if (D[edge.start->id] + edge.weight < D[edge.end->id]) {
                 D[edge.end->id] = D[edge.start->id] + edge.weight;
             }
@@ -98,7 +99,7 @@ int* Bellman_ford(Graph G, Node* S) {
     }
 
     // * Repeat - to find nodes caught in a negative cycle
-    for(int i=0; i<G.V-1; i++) {
+    for (int i = 0; i < G.V - 1; i++) {
         for (auto edge : G.edges) {
             if (D[edge.start->id] + edge.weight < D[edge.end->id]) {
                 D[edge.end->id] = INT_MIN;
@@ -125,8 +126,11 @@ int main() {
     for (auto node : g.nodes) {
         cout << node->data << '\t';
         if (distance[node->id] == INT_MIN) cout << "-INF" << endl;
+        else if (distance[node->id] == INT_MAX) cout << "INF" << endl;
         else cout << distance[node->id] << endl;
     }
+    cout << "Nodes with minimum distance equal to -INF are part of negative cycle.\n" << endl;
+    cout << "Nodes with maximum distance equal to INF are disconnected from graph containing start vertex.\n" << endl;
 }
 
 /*

@@ -1,11 +1,7 @@
-// Shortest path problem
-// A = 65, a = 97
 
 #include<iostream>
 
 using namespace std;
-
-// ! Time Complexity O(n²)
 
 int find_min(int *array, int size, int *visited) {
     int min = INT_MAX;
@@ -102,17 +98,4 @@ v = 8 e = 11
 2 1 800
 5 3 1000
 
-v = 7 e = 12
-bc 2
-cd 10
-de 6
-ef 1
-af 5
-ab 4
-bg 1
-cg 3
-gd 2
-ge 4
-gf 8 
-ga 2
 */
