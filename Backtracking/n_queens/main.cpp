@@ -26,6 +26,7 @@ bool is_legal(const vector<int> &v) {
 
 void NQueens(int totalTOPlace, int leftToPlace, vector<int> &v) {
     if (leftToPlace == 0) {
+        cout << endl;
         for(int i=0; i<totalTOPlace; i++) cout << v[i] << ' ';
         cout << endl;
         ++solutions;
@@ -44,6 +45,10 @@ void NQueens(int totalTOPlace, int leftToPlace, vector<int> &v) {
 }
 
 void NQueens(int n) {
+    if (n <= 0) {
+        cout << "Enter valid number, positive integer only" << endl;
+        return;
+    }
     vector<int> v;
     v.reserve(n);
     NQueens(n, n, v);
@@ -60,10 +65,7 @@ int main() {
     	cin >> m;
     	n = m;
 	}
-	if(n<=0) {
-		cout << "Solution does not exist" << endl;
-	}
-    cout << "Row numbers for each columns: " << endl;
+	
     NQueens(n);
     cout << "\nPossible number of solutions: " << solutions << endl;
     cout << "Number of attempts: " << attempts << endl;

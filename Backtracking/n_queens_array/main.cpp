@@ -8,12 +8,12 @@ int solutions = 0;
 bool is_legal(int* v, int totalPlaced) {
     ++attempts;
     int value = v[totalPlaced];
-    // Horizontal
+    // Test Horizontal
     for (int i = 0; i < totalPlaced; i++) {
         if (value == v[i]) return false;
     }
 
-    // diagonal
+    // Test Diagonal
     int offset = 1;
     for (int i = totalPlaced - 1; i >= 0; i--) {
         if (value == v[i] + offset) return false;
@@ -24,16 +24,21 @@ bool is_legal(int* v, int totalPlaced) {
 }
 
 void NQueens(int totalTOPlace, int* v = NULL, int totalPlaced = 0) {
+    if (totalTOPlace <= 0) {
+        cout << "Enter valid number, positive integer only" << endl;
+        return;
+    }
     if (v == NULL) {
         v = new int[totalTOPlace];
     }
     if (totalPlaced == totalTOPlace) {
+        cout << endl;
         for (int i = 0; i < totalTOPlace; i++) cout << v[i] << ' ';
         cout << endl;
         ++solutions;
         return;
     }
-    // Avoid so many pushes and pops by taking it out of the loop.
+    
     for (int i = 0; i < totalTOPlace; i++) {
         v[totalPlaced] = i;
         // Only move on when new queen doesn't collide with others.
@@ -48,7 +53,7 @@ int main() {
     cout << "Enter number of queens: ";
     cin >> n;
     NQueens(n);
-    cout << "Possible number of solutions: " << solutions << endl;
+    cout << "\nPossible number of solutions: " << solutions << endl;
     cout << "Number of attempts: " << attempts << endl;
 }
 
