@@ -62,7 +62,7 @@ int main() {
 	}
     cout << "Row numbers for each columns: " << endl;
     NQueens(n);
-    cout << "Possible number of solutions: " << solutions << endl;
+    cout << "\nPossible number of solutions: " << solutions << endl;
     cout << "Number of attempts: " << attempts << endl;
 }
 
