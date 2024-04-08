@@ -51,8 +51,16 @@ void NQueens(int n) {
 
 int main() {
     int n;
+    float m;
     cout << "Enter number of queens: ";
-    cin >> n;
+    cin >> m ;
+    n = m;
+    while(n!=m) {
+    	cout << "Enter integer value: ";
+    	cin >> m;
+    	n = m;
+	}
+    cout << "Row numbers for each columns: " << endl;
     NQueens(n);
     cout << "Possible number of solutions: " << solutions << endl;
     cout << "Number of attempts: " << attempts << endl;
