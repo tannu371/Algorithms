@@ -1,29 +1,28 @@
-// LCS - Longest common subsequence
-// LCS of 2 sequence is not unique
-
 #include<iostream>
 #include<string>
 
 using namespace std;
 
-// Brute force requires Exponential time to solve LCS problem
-// Time complexity: O(2ᵐ)
+/*
+* LCS - Longest common subsequence
+* LCS of 2 sequence is not unique
+& Brute force requires Exponential time to solve LCS problem
+! Time complexity: O(2ᵐ)
+& DP solves LCS in quadratic time
+& Quadratic means the runtime of the algorithm is directly proportional to the square of the size of the input
+& Steps:
+^ Create m(rows) x n (columns) matrix whose 1st row and 1st columns is filled with 0
+^ For int i=1 to m and j=1 to n
+^ If (i-1)th element of X and (j-1)th Y are equal 
+^ fill (i,j)th box with (i-1,j-1)th + 1 
+^ Else with max of (i-1, j)th and (i, j-1)th (In this case, if both values are equal, we use arrows to the previous rows(upward))
+! Time Complexity: O(m*n)
+! Auxiliary Space: O(m*n)
+*/
 
-// DP solves LCS in quadratic time
-// Quadratic means the runtime of the algorithm is directly proportional to the square of the size of the input
-
-// Create m(rows) x n (columns) matrix whose 1st row and 1st columns is filled with 0
-// For int i=1 to n and j=1 to n
-// If (i-1)th element of X and (j-1)th Y are equal 
-// fill (i,j)th box with (i-1,j-1)th + 1 
-// Else with max of (i-1, j)th and (i, j-1)th (In this case, if both values are equal, we use arrows to the previous rows(upward))
-
-// Time Complexity: O(m*n)
-// Auxiliary Space: O(m*n) 
-
-
-template<typename T>
-string** LCS(T x, T y, int m, int n) {
+string** LCS(string x, string y) {
+    int m = x.size();
+    int n = y.size();
     int dp[m+1][n+1];
     string **arrows;
     arrows = new string*[m];
@@ -49,12 +48,12 @@ string** LCS(T x, T y, int m, int n) {
         }
     }
 
-    return arrows; 
+    return arrows;  
 }
 
-// Time Complexity: O(m+n)
-template<typename T>
-void Print_LCS (string **arrows, T x, int i, int j) {
+// !Time Complexity: O(m+n)
+int count=0;
+void Print_LCS (string **arrows, string x, int i, int j) {
     if(i==-1 || j==-1) {
         cout << "\nLongest Common Sequence: "; 
         return;
@@ -69,35 +68,31 @@ void Print_LCS (string **arrows, T x, int i, int j) {
 
 int main() {
 
-    int m;
-    cout << "Enter the number of elements in 1st sequence: ";
-    cin >> m;
+    string x;
+    cout << "Enter string1 : ";
+    cin >> x;
 
-    int x[m];
-    cout << "Enter elements of 1st sequence: ";
-    for(int i=0; i<m; i++) cin >> x[i];
-
-    int n;
-    cout << "Enter the number of elements in 2nd sequence: ";
-    cin >> n;
-
-    int y[n];
-    cout << "Enter elements of 2nd sequence: ";
-    for(int i=0; i<m; i++) cin >> y[i];
-
-    string **arrows = LCS(x, y, m, n);
+    string y;
+    cout << "Enter string2: ";
+    cin >> y;
+    
+    string **arrows = LCS(x, y);
+    int m = x.size();
+    int n = y.size();
     Print_LCS(arrows, x, m-1, n-1);
-    cout << "\n" << endl;
+    cout << "\nLength of common subsequence: " << count << endl;
     
     return 0;
 }
 
-// m = 8
-// 1 0 0 1 0 1 0 1
-// n = 9
-// 0 1 0 1 1 0 1 1 0
+/*
 
-// m = 7
-// 1 0 1 0 0 1 1
-// n = 8
-// 0 1 1 1 0 1 0 1
+10010101
+010110110
+
+1010011
+01110101
+
+AGGTAB
+GXTXAYAB
+*/
