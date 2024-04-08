@@ -70,11 +70,11 @@ int main() {
 
     string x;
     cout << "Enter string1 : ";
-    cin >> x;
+    getline(cin, x);
 
     string y;
     cout << "Enter string2: ";
-    cin >> y;
+    getline(cin, y);
     
     string **arrows = LCS(x, y);
     int m = x.size();
