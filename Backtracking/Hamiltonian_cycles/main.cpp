@@ -10,6 +10,7 @@ using namespace std;
 
 bool HamiltonianCycle(vector<int>* graph, int V, int v, vector<int> path = {}, bool* visited = NULL) {
     if(visited == NULL) {
+        if (V <= 0) return false;
         visited = new bool[V];
         for(int i=0; i<V; i++) visited[i] = false;
         visited[v] = true;
@@ -25,7 +26,7 @@ bool HamiltonianCycle(vector<int>* graph, int V, int v, vector<int> path = {}, b
             visited[av] = true;
             path.push_back(av);
             if (HamiltonianCycle(graph, V, av, path, visited)) return true;
-            // ! BAcktracking
+            // ! Backtracking
             visited[av] = false;
             path.pop_back();
         }

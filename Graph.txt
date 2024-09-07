@@ -1,0 +1,23 @@
+MST
+Kruskal - ElogV
+Prims
+•⁠  ⁠Array : V²
+•⁠  ⁠Heap : ElogV
+
+Shortest Path
+Dijkstra 
+•⁠  ⁠Single source shortest path 
+•⁠  ⁠Fails if negative edge weight is present
+•⁠  Fibonnaci-heap as pq : ⁠E+VlogV
+•⁠  ⁠Binary-heap as pq : ElogV
+•⁠  Array : ⁠V² 
+Bellman ford - EV
+•⁠  ⁠Single source shortest path
+•⁠  ⁠Fails if negative cycle is present 
+•⁠  ⁠Detects negative cycle
+Floyd Warshall - V³
+•⁠  ⁠All pair shortest path
+
+Planer graph
+n-m+f = 2
+m = 3n-6

@@ -14,7 +14,7 @@ using namespace std;
 ^ Create m(rows) x n (columns) matrix whose 1st row and 1st columns is filled with 0
 ^ For int i=1 to m and j=1 to n
 ^ If (i-1)th element of X and (j-1)th Y are equal 
-^ fill (i,j)th box with (i-1,j-1)th + 1 
+^ fill (i,j)th box with (i-1,j-1)th + 1 (In this case, if both values are equal, we use arrows to the previous rows(left-up))
 ^ Else with max of (i-1, j)th and (i, j-1)th (In this case, if both values are equal, we use arrows to the previous rows(upward))
 ! Time Complexity: O(m*n)
 ! Auxiliary Space: O(m*n)

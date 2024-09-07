@@ -1,0 +1,9 @@
+1. semi-colon ;
+2. prenthesis ()
+3. initialize value of counter
+4. index out of range
+5. shift operator <<
+6. size() is for vector and length() is for string
+7. initialize n, number of elements to its size() and not size()-1.
+8. Use max min instead of if-else statement.
+9. Use > < expression to increase value of counter variable instead of using if-else statement.

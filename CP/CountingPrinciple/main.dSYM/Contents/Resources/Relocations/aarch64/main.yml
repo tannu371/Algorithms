@@ -1,0 +1,13 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/tannu/Repository/Algorithms/Math/CountingPrinciple/main'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: __Z8numTeamsRNSt3__16vectorIiNS_9allocatorIiEEEE, symObjAddr: 0x0, symBinAddr: 0x100003D08, symSize: 0x23C }
+  - { offsetInCU: 0x6525, offset: 0x6525, size: 0x8, addend: 0x0, symName: __Z8numTeamsRNSt3__16vectorIiNS_9allocatorIiEEEE, symObjAddr: 0x0, symBinAddr: 0x100003D08, symSize: 0x23C }
+  - { offsetInCU: 0x652D, offset: 0x652D, size: 0x8, addend: 0x0, symName: __ZNKSt3__16vectorIiNS_9allocatorIiEEE4sizeB8ue170006Ev, symObjAddr: 0x23C, symBinAddr: 0x100003F44, symSize: 0x28 }
+  - { offsetInCU: 0x6648, offset: 0x6648, size: 0x8, addend: 0x0, symName: __ZNKSt3__16vectorIiNS_9allocatorIiEEE4sizeB8ue170006Ev, symObjAddr: 0x23C, symBinAddr: 0x100003F44, symSize: 0x28 }
+  - { offsetInCU: 0x6650, offset: 0x6650, size: 0x8, addend: 0x0, symName: __ZNSt3__16vectorIiNS_9allocatorIiEEEixB8ue170006Em, symObjAddr: 0x264, symBinAddr: 0x100003F6C, symSize: 0x24 }
+  - { offsetInCU: 0x667A, offset: 0x667A, size: 0x8, addend: 0x0, symName: __ZNSt3__16vectorIiNS_9allocatorIiEEEixB8ue170006Em, symObjAddr: 0x264, symBinAddr: 0x100003F6C, symSize: 0x24 }
+  - { offsetInCU: 0x6682, offset: 0x6682, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x288, symBinAddr: 0x100003F90, symSize: 0x8 }
+  - { offsetInCU: 0x66C1, offset: 0x66C1, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x288, symBinAddr: 0x100003F90, symSize: 0x8 }
+...

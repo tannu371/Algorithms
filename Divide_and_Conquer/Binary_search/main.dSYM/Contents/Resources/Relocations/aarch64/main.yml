@@ -1,7 +1,9 @@
 ---
 triple:          'arm64-apple-darwin'
-binary-path:     '/Users/tannu/Repository/Algorithms/Divide&Conquer/Binary search/main'
+binary-path:     '/Users/tannu/Repository/Algorithms/Divide_and_Conquer/Binary_search/main'
 relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003FA0, symSize: 0x8 }
-  - { offsetInCU: 0x2CE1, offset: 0x2CE1, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003FA0, symSize: 0x8 }
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: __Z13Binary_searchv, symObjAddr: 0x0, symBinAddr: 0x100003F9C, symSize: 0x4 }
+  - { offsetInCU: 0x47DB, offset: 0x47DB, size: 0x8, addend: 0x0, symName: __Z13Binary_searchv, symObjAddr: 0x0, symBinAddr: 0x100003F9C, symSize: 0x4 }
+  - { offsetInCU: 0x47E3, offset: 0x47E3, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x4, symBinAddr: 0x100003FA0, symSize: 0x8 }
+  - { offsetInCU: 0x47FA, offset: 0x47FA, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x4, symBinAddr: 0x100003FA0, symSize: 0x8 }
 ...

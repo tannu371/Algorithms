@@ -63,6 +63,7 @@ int main() {
                 cin >> A[i].first >> A[i].second;
             } while (A[i].first < 1 || A[i].second < 1);
         }
+
         if (i != 1 && A[i].first != A[i - 1].second) {
             cerr << "Incorrect input" << endl;
             return -1;
@@ -76,6 +77,7 @@ int main() {
         m[i] = new int[n + 1];
         m[i][i] = 0;
     }
+    
     int* s[n + 1];
     for (int i = 1; i < n + 1; i++) s[i] = new int[n + 1];
     parenthesise_matrix_chain(p, 1, n, m, s);

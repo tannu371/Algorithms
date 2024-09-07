@@ -2,8 +2,8 @@
 
 using namespace std;
 
-void Merge(T init_list[], int lb, int mid, int ub) {
-    T merged_list[ub+1];
+void Merge(int init_list[], int lb, int mid, int ub) {
+    int merged_list[ub+1];
     int i=lb, j = mid+1, k=lb;
     while(i<=mid and j<= ub) {
         if(init_list[i] < init_list[j]) merged_list[k++] = init_list[i++];
@@ -15,14 +15,14 @@ void Merge(T init_list[], int lb, int mid, int ub) {
     while(j<=ub) {
         merged_list[k++] = init_list[j++];
     }
+    
     for(int i=lb; i<=ub; i++) {
         init_list[i] = merged_list[i];
     }
     
 }
 
-template<typename T>
-void Merge_sort(T init_list[], int lb, int ub) {
+void Merge_sort(int init_list[], int lb, int ub) {
     if(lb<ub) {
         int mid = (lb+ub)/2;
         Merge_sort(init_list, lb, mid);

@@ -1,9 +1,12 @@
+Recursion
+Binary search in sorted array T(n) = T(n/2) + 1
+Merge sort T(n) = 2T(n/2) + O(n) n>=2
+
 Tower of Hanoi
 T(n)=2T(n-1)+c
 T(n) = O(2ⁿ)
 
 Substitution Method
-
 Tree Method
 
 Master Theorem
@@ -11,7 +14,7 @@ T(n) = aT(n/b) + f(n)
 log a / log b = k & f(n) is polynomial : f(n) = O(n^m) 
 if k > m : T(n) = O(n^k)
 if k = m : T(n) = O(n^k log₂n)
-if k < m : T(n) = O(n^m) 
+if k < m : T(n) = O(n^m)
 
 T(n) = 2T(n/2) + 1 for n>1 and T(n) = T(1) for n=1
 T(n) = O(n)
@@ -19,15 +22,28 @@ T(n) = O(n)
 T(n) = 2T(n/2) + n for n>1 and T(n) = T(1) for n=1
 T(n) = O(nlog₂n)
 
+T(n) = 3T(n/3) + O(n⁴) 
+T(n) = O(n⁴)
+
+T(n) = T(n/3) + T(2n/3) + n
+T(n) = O(n log₂n)
+
+T(n) = T(2n/3) + 1
+T(n) = O(log₂n)
+
+T(n) = 3T(n/4) + nlog₂n
+T(n) = O(nlog₂n)
+
+Changing variable
+T(√n) : m = log₂n or n = 2ᵐ
+
 T(n) = 2T(√n) + 1 for n>1 and T(n) = T(1) for n=1
-n = 2ᵐ
 T(n) = O(log₂n)
 
 T(n) = 2T(√n) + log₂n for n>1 and T(n) = T(1) for n=1
-n = 2ᵐ
 T(n) = O(log₂n log₂log₂n)
 
-T(n) = 3T(n/3) + O(n⁴) = O(n⁴)
+T(n) = 2T(n/2) + nlog₂n : Master Theorem cannot be applied
 
 A generative function is used in context of recursive function to derive 
 explicit formula from recursive formula and recursive formula from explicit formula.

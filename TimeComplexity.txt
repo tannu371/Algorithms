@@ -12,8 +12,6 @@ Theta notation is more precise than the Big-Oh and Big-Omega notation.
 Little Oh : f(n) = o(g(n)) implies 0 <= f(n) < cg(n) for n>=n₀
 Little Omega : f(n) = ω(g(n)) implies 0 <= cg(n) < f(n)  for n>=n₀
 
-
-
 The 5 Properties of Algorithms
 1. Input specified.
 2. Output specified.
